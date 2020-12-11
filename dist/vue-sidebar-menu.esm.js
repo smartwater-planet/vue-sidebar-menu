@@ -797,7 +797,7 @@ script$3.render = render$3;
 script$3.__file = "src/components/SidebarMenuItem.vue";
 
 var script$4 = {
-  name: 'SidebarMenu',
+  name: "SidebarMenu",
   components: {
     SidebarMenuItem: script$3
   },
@@ -812,11 +812,11 @@ var script$4 = {
     },
     width: {
       type: String,
-      default: '290px'
+      default: "290px"
     },
     widthCollapsed: {
       type: String,
-      default: '65px'
+      default: "65px"
     },
     showChild: {
       type: Boolean,
@@ -824,7 +824,7 @@ var script$4 = {
     },
     theme: {
       type: String,
-      default: ''
+      default: ""
     },
     showOneChild: {
       type: Boolean,
@@ -848,11 +848,11 @@ var script$4 = {
     },
     linkComponentName: {
       type: String,
-      default: 'SidebarMenuLink'
+      default: "SidebarMenuLink"
     }
   },
   setup: function setup(props, context) {
-    provide('vsm-props', props);
+    provide("vsm-props", props);
 
     var _useMenu = useMenu(props, context),
         sidebarMenuRef = _useMenu.sidebarMenuRef,
@@ -868,7 +868,7 @@ var script$4 = {
         mobileItemBackgroundStyle = _useMenu.mobileItemBackgroundStyle,
         unsetMobileItem = _useMenu.unsetMobileItem;
 
-    provide('emitItemClick', onItemClick);
+    provide("emitItemClick", onItemClick);
     isCollapsed.value = props.collapsed;
     watch(function () {
       return props.collapsed;
@@ -891,17 +891,17 @@ var script$4 = {
     };
   },
   emits: {
-    'item-click': function itemClick(event, item) {
+    "item-click": function itemClick(event, item) {
       return !!(event && item);
     },
-    'update:collapsed': function updateCollapsed(collapsed) {
-      return !!(typeof collapsed === 'boolean');
+    "update:collapsed": function updateCollapsed(collapsed) {
+      return !!(typeof collapsed === "boolean");
     }
   }
 };
 
 var _hoisted_1$1 = /*#__PURE__*/createVNode("span", {
-  class: "vsm--arrow_default"
+  class: "vsm--toggle-btn_default"
 }, null, -1
 /* HOISTED */
 );
@@ -913,7 +913,7 @@ var _hoisted_2$1 = /*#__PURE__*/createVNode("span", {
 );
 
 var _hoisted_3 = /*#__PURE__*/createVNode("span", {
-  class: "vsm--toggle-btn_default"
+  class: "vsm--arrow_default"
 }, null, -1
 /* HOISTED */
 );
@@ -933,7 +933,15 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
     onMouseleave: _cache[3] || (_cache[3] = function () {
       return $setup.onMouseLeave.apply($setup, arguments);
     })
-  }, [renderSlot(_ctx.$slots, "header"), createVNode("div", {
+  }, [!$props.hideToggle ? (openBlock(), createBlock("button", {
+    key: 0,
+    class: "vsm--toggle-btn",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $setup.onToggleClick.apply($setup, arguments);
+    })
+  }, [renderSlot(_ctx.$slots, "toggle-icon", {}, function () {
+    return [_hoisted_1$1];
+  })])) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "header"), createVNode("div", {
     class: "vsm--scroll-wrapper",
     style: $setup.isCollapsed && [$props.rtl ? {
       'margin-left': '-17px'
@@ -943,7 +951,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createVNode("div", {
     class: "vsm--menu",
     style: $setup.isCollapsed && {
-      'width': $props.widthCollapsed
+      width: $props.widthCollapsed
     }
   }, [(openBlock(true), createBlock(Fragment, null, renderList($props.menu, function (item, index) {
     return openBlock(), createBlock(_component_sidebar_menu_item, {
@@ -955,7 +963,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
         return [renderSlot(_ctx.$slots, "dropdown-icon", {
           isOpen: isOpen
         }, function () {
-          return [_hoisted_1$1];
+          return [_hoisted_2$1];
         })];
       }),
       _: 2
@@ -979,7 +987,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
       return [renderSlot(_ctx.$slots, "dropdown-icon", {
         isOpen: isOpen
       }, function () {
-        return [_hoisted_2$1];
+        return [_hoisted_3];
       })];
     }),
     _: 1
@@ -1002,15 +1010,7 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   /* STYLE */
   )) : createCommentVNode("v-if", true)], 4
   /* STYLE */
-  ), renderSlot(_ctx.$slots, "footer"), !$props.hideToggle ? (openBlock(), createBlock("button", {
-    key: 0,
-    class: "vsm--toggle-btn",
-    onClick: _cache[1] || (_cache[1] = function () {
-      return $setup.onToggleClick.apply($setup, arguments);
-    })
-  }, [renderSlot(_ctx.$slots, "toggle-icon", {}, function () {
-    return [_hoisted_3];
-  })])) : createCommentVNode("v-if", true)], 38
+  ), renderSlot(_ctx.$slots, "footer")], 38
   /* CLASS, STYLE, HYDRATE_EVENTS */
   );
 }
